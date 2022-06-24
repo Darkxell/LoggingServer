@@ -30,8 +30,10 @@ public class ApplicationProperties {
 		if (is == null)
 			try {
 				is = new FileInputStream("gametunut.properties");
+				System.out.println("Local properties found : gametunut.properties");
 			} catch (FileNotFoundException e) {
-				System.out.println("gametunut.properties could not be found locally." + "\nMake sure to either ");
+				System.out.println("gametunut.properties could not be found locally."
+						+ "\nMake sure to either provide a properties path, or have a gametunut.properties file available locally.");
 				e.printStackTrace();
 			}
 		// Use inputstream to build a properties map.
@@ -63,10 +65,10 @@ public class ApplicationProperties {
 			}
 		}
 	}
-	
-	public int getPort(){
+
+	public int getPort() {
 		int toreturn = 8000;
-		if(properties.containsKey("port"))
+		if (properties.containsKey("port"))
 			try {
 				toreturn = Integer.parseInt(properties.get("port"));
 			} catch (Exception e) {

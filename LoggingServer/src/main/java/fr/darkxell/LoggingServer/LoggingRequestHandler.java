@@ -10,11 +10,12 @@ public class LoggingRequestHandler implements HttpHandler {
 
 	@Override
 	public void handle(HttpExchange t) throws IOException {
-		String response = "Response text";
+		String response = "HTTP 200 : ok";
 		t.sendResponseHeaders(200, response.length()); // 200 OK http
 		OutputStream os = t.getResponseBody();
 		os.write(response.getBytes());
 		os.close();
+		LogFileWriter.log(System.currentTimeMillis() + " : " + t.toString());
 	}
 
 }
