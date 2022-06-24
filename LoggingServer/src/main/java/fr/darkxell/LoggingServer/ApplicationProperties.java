@@ -63,5 +63,15 @@ public class ApplicationProperties {
 			}
 		}
 	}
+	
+	public int getPort(){
+		int toreturn = 8000;
+		if(properties.containsKey("port"))
+			try {
+				toreturn = Integer.parseInt(properties.get("port"));
+			} catch (Exception e) {
+			}
+		return toreturn;
+	}
 
 }
