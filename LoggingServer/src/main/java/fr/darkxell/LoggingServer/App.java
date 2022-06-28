@@ -14,6 +14,7 @@ public class App {
 		// Create the server endpoint
 		try {
 			HttpServer server = HttpServer.create(new InetSocketAddress(ApplicationProperties.instance.getPort()), 0);
+			server.createContext("/Home", new PingRequestHandler());
 			server.createContext("/PostData", new LoggingRequestHandler());
 			server.setExecutor(null);
 			server.start();
