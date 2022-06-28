@@ -44,8 +44,8 @@ public class LogFileWriter implements Runnable {
 			try {
 				while (logStack.size() >= 1) {
 					String tolog = logStack.get(0);
-					logStack.remove(0);
 					logToFile(tolog);
+					logStack.remove(0);
 				}
 			} catch (Exception e) {
 				System.err.println("Couldn't log " + logStack.size() + " lines, trying again in 1 second...");
