@@ -46,6 +46,26 @@
 				<plugin>
 					<artifactId>maven-resources-plugin</artifactId>
 					<version>3.0.2</version>
+					<executions>
+               					<execution>
+                    				<id>copy-resources</id>
+                    				<phase>install</phase>
+                    				<goals>
+                        				<goal>copy-resources</goal>
+                    				</goals>
+                    				<configuration>
+                        				<outputDirectory>${basedir}/target/</outputDirectory>
+                        				<resources>
+                            					<resource>
+                                					<directory>${basedir}/src/conf/</directory>
+                                					<includes>
+                                   						<include>**/*.*</include>
+                                					</includes>
+                            					</resource>
+                        				</resources>
+                    				</configuration>
+                				</execution>
+            				</executions>
 				</plugin>
 				<plugin>
 					<artifactId>maven-compiler-plugin</artifactId>
