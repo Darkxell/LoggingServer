@@ -5,15 +5,19 @@ import java.io.FileOutputStream;
 import java.io.PrintWriter;
 import java.sql.Date;
 import java.util.ArrayList;
+import java.util.Random;
 
 public class LogFileWriter implements Runnable {
 
-	public static ArrayList<String> logStack = new ArrayList<>(50);
+	private static ArrayList<String> logStack = new ArrayList<>(50);
 
 	private static LogFileWriter instance = null;
 
-	public static void log(String line) {
+	public static int logcounter = 0;
+
+	public synchronized static void log(String line) {
 		logStack.add(line);
+		logcounter++;
 		if (instance == null) {
 			instance = new LogFileWriter();
 			Thread t = new Thread(instance);
@@ -29,10 +33,14 @@ public class LogFileWriter implements Runnable {
 		}
 	}
 
+	private int machinerandomID = -1;
+
 	private String generateFileName() {
 		try {
+			if (machinerandomID == -1)
+				machinerandomID = new Random().nextInt(999);
 			Date date = new Date(System.currentTimeMillis());
-			return date.toString() + "-gametunut.log";
+			return date.toString() + "-" + machinerandomID + "-gametunut.log";
 		} catch (Exception e) {
 			return "gametunut-default.log";
 		}
