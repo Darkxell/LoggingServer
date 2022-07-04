@@ -26,7 +26,7 @@ public class LogFileWriter implements Runnable {
 	}
 
 	private void logToFile(String line) {
-		try (PrintWriter out = new PrintWriter(new FileOutputStream(generateFileName(), true))) {
+		try (PrintWriter out = new PrintWriter(new FileOutputStream("logs/" + generateFileName(), true))) {
 			out.println(line);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();

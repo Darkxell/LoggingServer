@@ -24,10 +24,10 @@ public class LoggingRequestHandler implements HttpHandler {
 		if (acceptrequest) {
 			response = "HTTP 200 : Ok";
 			t.sendResponseHeaders(200, response.length());
+			LogFileWriter.log(System.currentTimeMillis() + " : " + payloadrequest);
 		} else {
 			response = "HTTP 403 : Forbidden";
 			t.sendResponseHeaders(200, response.length());
-			LogFileWriter.log(System.currentTimeMillis() + " : " + payloadrequest);
 		}
 		OutputStream os = t.getResponseBody();
 		os.write(response.getBytes());
