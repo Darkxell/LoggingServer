@@ -17,7 +17,7 @@ public class App {
 		ApplicationProperties.instance = new ApplicationProperties(args.length >= 1 ? args[0] : null);
 		// Create the server endpoint
 		try {
-			startTimestamp = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss").format(new Date(System.currentTimeMillis()));
+			startTimestamp = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date(System.currentTimeMillis()));
 			HttpServer server = HttpServer.create(new InetSocketAddress(ApplicationProperties.instance.getPort()), 0);
 			server.createContext("/Home", new PingRequestHandler());
 			server.createContext("/PostData", new LoggingRequestHandler());
