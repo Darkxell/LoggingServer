@@ -18,7 +18,7 @@ public class LoggingRequestHandler implements HttpHandler {
 		// write arbitrary data on our server
 		// Do note that printed content is not sanitized and should in NO WAY be
 		// executed.
-		boolean acceptrequest = payloadrequest.contains("source=gametunut");
+		boolean acceptrequest = payloadrequest.contains("gametunut-client");
 
 		String response;
 		if (acceptrequest) {
